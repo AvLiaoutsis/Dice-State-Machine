@@ -1,0 +1,560 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.13 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.13 secs
+ 
+--> Reading design: top_level_counter.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "top_level_counter.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "top_level_counter"
+Output Format                      : NGC
+Target Device                      : xc3s200-5-ft256
+
+---- Source Options
+Top Module Name                    : top_level_counter
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 8
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Users/Gegk/Desktop/New folder/Lab44/freq_div.vhd" in Library work.
+Architecture behavioral of Entity freq_div is up to date.
+Compiling vhdl file "C:/Users/Gegk/Desktop/New folder/Lab44/top_level_counter.vhd" in Library work.
+Entity <top_level_counter> compiled.
+Entity <top_level_counter> (Architecture <behavioral>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <top_level_counter> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <freq_div> in library <work> (architecture <Behavioral>) with generics.
+	CLK_INPUT = 50000000
+	CLK_OUTPUT = 1
+
+Analyzing hierarchy for entity <freq_div> in library <work> (architecture <Behavioral>) with generics.
+	CLK_INPUT = 50000000
+	CLK_OUTPUT = 2
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <top_level_counter> in library <work> (Architecture <behavioral>).
+Entity <top_level_counter> analyzed. Unit <top_level_counter> generated.
+
+Analyzing generic Entity <freq_div.1> in library <work> (Architecture <Behavioral>).
+	CLK_INPUT = 50000000
+	CLK_OUTPUT = 1
+Entity <freq_div.1> analyzed. Unit <freq_div.1> generated.
+
+Analyzing generic Entity <freq_div.2> in library <work> (Architecture <Behavioral>).
+	CLK_INPUT = 50000000
+	CLK_OUTPUT = 2
+Entity <freq_div.2> analyzed. Unit <freq_div.2> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <freq_div_1>.
+    Related source file is "C:/Users/Gegk/Desktop/New folder/Lab44/freq_div.vhd".
+    Found 1-bit register for signal <clk>.
+    Found 25-bit up counter for signal <clk_count>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+Unit <freq_div_1> synthesized.
+
+
+Synthesizing Unit <freq_div_2>.
+    Related source file is "C:/Users/Gegk/Desktop/New folder/Lab44/freq_div.vhd".
+    Found 1-bit register for signal <clk>.
+    Found 24-bit up counter for signal <clk_count>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+Unit <freq_div_2> synthesized.
+
+
+Synthesizing Unit <top_level_counter>.
+    Related source file is "C:/Users/Gegk/Desktop/New folder/Lab44/top_level_counter.vhd".
+    Found finite state machine <FSM_0> for signal <current_state>.
+    -----------------------------------------------------------------------
+    | States             | 6                                              |
+    | Transitions        | 33                                             |
+    | Inputs             | 5                                              |
+    | Outputs            | 6                                              |
+    | Clock              | clk_div                   (rising_edge)        |
+    | Reset              | newgame                   (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | phase1                                         |
+    | Power Up State     | phase1                                         |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 6-bit register for signal <count>.
+    Found 6-bit adder for signal <count$addsub0000> created at line 196.
+    Found 3-bit comparator lessequal for signal <count$cmp_le0000> created at line 179.
+    Found 3-bit comparator lessequal for signal <count$cmp_le0001> created at line 192.
+    Found 3-bit register for signal <count1>.
+    Found 3-bit register for signal <countere>.
+    Found 3-bit adder for signal <countere$addsub0000> created at line 193.
+    Found 3-bit register for signal <counterr>.
+    Found 3-bit adder for signal <counterr$addsub0000> created at line 181.
+    Found 6-bit register for signal <dice1>.
+    Found 1-bit register for signal <flag>.
+    Found 6-bit comparator equal for signal <flag$cmp_eq0006> created at line 224.
+    Found 1-bit register for signal <flag1>.
+    Found 1-bit register for signal <flag2>.
+    Found 1-bit register for signal <flag3>.
+    Found 1-bit xor2 for signal <linear_feedback$xor0000> created at line 164.
+    Found 1-bit xor2 for signal <linear_feedback1$xor0000> created at line 165.
+    Found 1-bit register for signal <lose>.
+    Found 1-bit register for signal <win>.
+    Found 1-bit register for signal <zaria1>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  28 D-type flip-flop(s).
+	inferred   3 Adder/Subtractor(s).
+	inferred   3 Comparator(s).
+Unit <top_level_counter> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 3
+ 3-bit adder                                           : 2
+ 6-bit adder                                           : 1
+# Counters                                             : 2
+ 24-bit up counter                                     : 1
+ 25-bit up counter                                     : 1
+# Registers                                            : 14
+ 1-bit register                                        : 9
+ 3-bit register                                        : 3
+ 6-bit register                                        : 2
+# Comparators                                          : 3
+ 3-bit comparator lessequal                            : 2
+ 6-bit comparator equal                                : 1
+# Xors                                                 : 2
+ 1-bit xor2                                            : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <current_state/FSM> on signal <current_state[1:3]> with gray encoding.
+----------------------
+ State    | Encoding
+----------------------
+ phase1   | 000
+ roll1    | 001
+ rollstop | 011
+ dice12   | 010
+ result1  | 110
+ final    | 111
+----------------------
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 1
+# Adders/Subtractors                                   : 3
+ 3-bit adder                                           : 2
+ 6-bit adder                                           : 1
+# Counters                                             : 2
+ 24-bit up counter                                     : 1
+ 25-bit up counter                                     : 1
+# Registers                                            : 30
+ Flip-Flops                                            : 30
+# Comparators                                          : 3
+ 3-bit comparator lessequal                            : 2
+ 6-bit comparator equal                                : 1
+# Xors                                                 : 2
+ 1-bit xor2                                            : 2
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <top_level_counter> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block top_level_counter, actual ratio is 4.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 82
+ Flip-Flops                                            : 82
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : top_level_counter.ngr
+Top Level Output File Name         : top_level_counter
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 11
+
+Cell Usage :
+# BELS                             : 293
+#      GND                         : 1
+#      INV                         : 4
+#      LUT1                        : 48
+#      LUT2                        : 9
+#      LUT3                        : 18
+#      LUT3_D                      : 2
+#      LUT3_L                      : 1
+#      LUT4                        : 76
+#      LUT4_D                      : 10
+#      LUT4_L                      : 8
+#      MUXCY                       : 60
+#      MUXF5                       : 6
+#      VCC                         : 1
+#      XORCY                       : 49
+# FlipFlops/Latches                : 82
+#      FD                          : 17
+#      FDC                         : 3
+#      FDE                         : 5
+#      FDR                         : 49
+#      FDS                         : 8
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 10
+#      IBUF                        : 2
+#      OBUF                        : 8
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s200ft256-5 
+
+ Number of Slices:                       91  out of   1920     4%  
+ Number of Slice Flip Flops:             82  out of   3840     2%  
+ Number of 4 input LUTs:                176  out of   3840     4%  
+ Number of IOs:                          11
+ Number of bonded IOBs:                  11  out of    173     6%  
+ Number of GCLKs:                         2  out of      8    25%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+-----------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)       | Load  |
+-----------------------------------+-----------------------------+-------+
+freq_div_unit1/clk1                | BUFG                        | 28    |
+clk                                | BUFGP                       | 51    |
+freq_div_unit/clk                  | NONE(current_state_FSM_FFd3)| 3     |
+-----------------------------------+-----------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+newgame                            | IBUF                   | 3     |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 6.390ns (Maximum Frequency: 156.503MHz)
+   Minimum input arrival time before clock: 2.885ns
+   Maximum output required time after clock: 8.790ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'freq_div_unit1/clk1'
+  Clock period: 6.390ns (frequency: 156.503MHz)
+  Total number of paths / destination ports: 511 / 36
+-------------------------------------------------------------------------
+Delay:               6.390ns (Levels of Logic = 4)
+  Source:            count_1 (FF)
+  Destination:       dice1_0 (FF)
+  Source Clock:      freq_div_unit1/clk1 rising
+  Destination Clock: freq_div_unit1/clk1 rising
+
+  Data Path: count_1 to dice1_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDS:C->Q             11   0.626   0.995  count_1 (count_1)
+     LUT4:I3->O            3   0.479   1.066  dices<1>1 (dicewl_1_OBUF)
+     LUT4:I0->O            2   0.479   0.768  dice1_or0000_SW0 (N34)
+     LUT4_D:I3->O          5   0.479   0.842  dice1_mux0000<0>21 (N49)
+     LUT4:I2->O            1   0.479   0.000  dice1_mux0000<4>1 (dice1_mux0000<4>)
+     FD:D                      0.176          dice1_4
+    ----------------------------------------
+    Total                      6.390ns (2.718ns logic, 3.672ns route)
+                                       (42.5% logic, 57.5% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 5.541ns (frequency: 180.461MHz)
+  Total number of paths / destination ports: 1877 / 102
+-------------------------------------------------------------------------
+Delay:               5.541ns (Levels of Logic = 8)
+  Source:            freq_div_unit/clk_count_5 (FF)
+  Destination:       freq_div_unit/clk_count_0 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: freq_div_unit/clk_count_5 to freq_div_unit/clk_count_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              2   0.626   1.040  freq_div_unit/clk_count_5 (freq_div_unit/clk_count_5)
+     LUT1:I0->O            1   0.479   0.000  freq_div_unit/clk_cmp_eq0000_wg_cy<0>_rt (freq_div_unit/clk_cmp_eq0000_wg_cy<0>_rt)
+     MUXCY:S->O            1   0.435   0.000  freq_div_unit/clk_cmp_eq0000_wg_cy<0> (freq_div_unit/clk_cmp_eq0000_wg_cy<0>)
+     MUXCY:CI->O           1   0.056   0.000  freq_div_unit/clk_cmp_eq0000_wg_cy<1> (freq_div_unit/clk_cmp_eq0000_wg_cy<1>)
+     MUXCY:CI->O           1   0.056   0.000  freq_div_unit/clk_cmp_eq0000_wg_cy<2> (freq_div_unit/clk_cmp_eq0000_wg_cy<2>)
+     MUXCY:CI->O           1   0.056   0.000  freq_div_unit/clk_cmp_eq0000_wg_cy<3> (freq_div_unit/clk_cmp_eq0000_wg_cy<3>)
+     MUXCY:CI->O           1   0.056   0.000  freq_div_unit/clk_cmp_eq0000_wg_cy<4> (freq_div_unit/clk_cmp_eq0000_wg_cy<4>)
+     MUXCY:CI->O           1   0.056   0.000  freq_div_unit/clk_cmp_eq0000_wg_cy<5> (freq_div_unit/clk_cmp_eq0000_wg_cy<5>)
+     MUXCY:CI->O          26   0.246   1.546  freq_div_unit/clk_cmp_eq0000_wg_cy<6> (freq_div_unit/clk_cmp_eq0000)
+     FDR:R                     0.892          freq_div_unit/clk_count_0
+    ----------------------------------------
+    Total                      5.541ns (2.955ns logic, 2.586ns route)
+                                       (53.3% logic, 46.7% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'freq_div_unit/clk'
+  Clock period: 3.789ns (frequency: 263.913MHz)
+  Total number of paths / destination ports: 11 / 3
+-------------------------------------------------------------------------
+Delay:               3.789ns (Levels of Logic = 2)
+  Source:            current_state_FSM_FFd1 (FF)
+  Destination:       current_state_FSM_FFd3 (FF)
+  Source Clock:      freq_div_unit/clk rising
+  Destination Clock: freq_div_unit/clk rising
+
+  Data Path: current_state_FSM_FFd1 to current_state_FSM_FFd3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q             32   0.626   1.870  current_state_FSM_FFd1 (current_state_FSM_FFd1)
+     LUT4_L:I0->LO         1   0.479   0.159  current_state_FSM_FFd3-In_SW2 (N1011)
+     LUT3:I2->O            1   0.479   0.000  current_state_FSM_FFd3-In (current_state_FSM_FFd3-In)
+     FDC:D                     0.176          current_state_FSM_FFd3
+    ----------------------------------------
+    Total                      3.789ns (1.760ns logic, 2.029ns route)
+                                       (46.4% logic, 53.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'freq_div_unit/clk'
+  Total number of paths / destination ports: 8 / 3
+-------------------------------------------------------------------------
+Offset:              2.885ns (Levels of Logic = 3)
+  Source:            newgame (PAD)
+  Destination:       current_state_FSM_FFd2 (FF)
+  Destination Clock: freq_div_unit/clk rising
+
+  Data Path: newgame to current_state_FSM_FFd2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             7   0.715   1.201  newgame_IBUF (newgame_IBUF)
+     LUT4:I0->O            1   0.479   0.000  current_state_FSM_FFd2-In_F (N105)
+     MUXF5:I0->O           1   0.314   0.000  current_state_FSM_FFd2-In (current_state_FSM_FFd2-In)
+     FDC:D                     0.176          current_state_FSM_FFd2
+    ----------------------------------------
+    Total                      2.885ns (1.684ns logic, 1.201ns route)
+                                       (58.4% logic, 41.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'freq_div_unit1/clk1'
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Offset:              7.898ns (Levels of Logic = 2)
+  Source:            count_4 (FF)
+  Destination:       dicewl<4> (PAD)
+  Source Clock:      freq_div_unit1/clk1 rising
+
+  Data Path: count_4 to dicewl<4>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               9   0.626   0.978  count_4 (count_4)
+     LUT4:I3->O            7   0.479   0.906  dices<4>1 (dicewl_4_OBUF)
+     OBUF:I->O                 4.909          dicewl_4_OBUF (dicewl<4>)
+    ----------------------------------------
+    Total                      7.898ns (6.014ns logic, 1.885ns route)
+                                       (76.1% logic, 23.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'freq_div_unit/clk'
+  Total number of paths / destination ports: 18 / 6
+-------------------------------------------------------------------------
+Offset:              8.790ns (Levels of Logic = 2)
+  Source:            current_state_FSM_FFd3 (FF)
+  Destination:       dicewl<4> (PAD)
+  Source Clock:      freq_div_unit/clk rising
+
+  Data Path: current_state_FSM_FFd3 to dicewl<4>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q             32   0.626   1.870  current_state_FSM_FFd3 (current_state_FSM_FFd3)
+     LUT4:I0->O            7   0.479   0.906  dices<4>1 (dicewl_4_OBUF)
+     OBUF:I->O                 4.909          dicewl_4_OBUF (dicewl<4>)
+    ----------------------------------------
+    Total                      8.790ns (6.014ns logic, 2.776ns route)
+                                       (68.4% logic, 31.6% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 5.50 secs
+ 
+--> 
+
+Total memory usage is 259076 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
+

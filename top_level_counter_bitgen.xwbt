@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\Gegk\Desktop\New folder\TelikhErgOm\DiceStateMachine\top_level_counter.ncd
+OUTFILE=C:\Users\Gegk\Desktop\New folder\TelikhErgOm\DiceStateMachine\top_level_counter.bit
+FAMILY=Spartan3
+PART=xc3s200-5ft256
+WORKINGDIR=C:\Users\Gegk\Desktop\New folder\TelikhErgOm\DiceStateMachine
+LICENSE=WebPack
+USER_INFO=211322887_0_0_470

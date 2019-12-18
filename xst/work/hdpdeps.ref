@@ -1,0 +1,15 @@
+V3 6
+FL "C:/Users/Gegk/Desktop/New folder/Lab44/freq_div.vhd" 2015/05/11.18:59:06 P.20131013
+EN work/freq_div 1498299972 \
+      FL "C:/Users/Gegk/Desktop/New folder/Lab44/freq_div.vhd" \
+      PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
+      PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/freq_div/Behavioral 1498299973 \
+      FL "C:/Users/Gegk/Desktop/New folder/Lab44/freq_div.vhd" EN work/freq_div 1498299972
+FL "C:/Users/Gegk/Desktop/New folder/Lab44/top_level_counter.vhd" 2017/06/24.13:26:10 P.20131013
+EN work/top_level_counter 1498299974 \
+      FL "C:/Users/Gegk/Desktop/New folder/Lab44/top_level_counter.vhd" \
+      PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/top_level_counter/Behavioral 1498299975 \
+      FL "C:/Users/Gegk/Desktop/New folder/Lab44/top_level_counter.vhd" \
+      EN work/top_level_counter 1498299974 AR work/freq_div/Behavioral 1498299973

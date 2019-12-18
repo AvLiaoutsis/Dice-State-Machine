@@ -1,0 +1,2 @@
+vhdl work "../../Lab44/freq_div.vhd"
+vhdl work "../../Lab44/top_level_counter.vhd"
